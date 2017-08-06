@@ -130,6 +130,7 @@ def binarize(name):
 
 
 def strip_prefix(prefix, string):
+    print((prefix, string))
     if string.startswith(prefix):
         return string[len(prefix):]
     return string
