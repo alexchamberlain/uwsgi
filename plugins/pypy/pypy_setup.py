@@ -48,7 +48,8 @@ uwsgi_cdef = []
 uwsgi_defines = []
 uwsgi_cflags = ffi.string(lib0.uwsgi_get_cflags()).split()
 for cflag in uwsgi_cflags:
-    if cflag.startswith('-D'):
+    print('{!r}'.format(cflag))
+    if cflag.startswith(b'-D'):
         line = cflag[2:]
         if '=' in line:
             (key, value) = line.split('=', 1)
@@ -335,6 +336,7 @@ def uwsgi_pypy_paste_loader(config):
     """
     global wsgi_application
     c = ffi.string(config)
+    print('{!r}'.format(c))
     if c.startswith('config:'):
         c = c[7:]
     if c[0] != '/':
